@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyílt nap jelentkezés</title>
+    <link rel="stylesheet" href="style/cards.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="js/script.js"></script>
+    <script src="js/id-orarend-export-filterezett.js"></script>
+    </script>
+    <script>
+        function loadCards() {
+            let l = data.length;
+            //
+            //l = 10;
+            //
+            var cards = document.getElementById('cardList');
+            var append;
+            for (let i=0; i<l; i++) {
+                let temp = data[i];
+                let currentId = temp.id.toString();
+
+                append = '<div class="card" onclick="toggleCard(this);" data-period="' + temp.period + '" '; //data-period attribute a kereséshez kell
+                append += 'id="card-' + currentId + '">'; // kell card id
+
+                // ez a három lesz mutatva
+                append += '<p class="p-time"><b>időpont:</b> ' + temp.starttime + ' - ' + temp.endtime + '</p>';
+                append += '<p class="p-subject"><b>tantárgy:</b> ' + temp.subject + '</p>';
+                append += '<p class="p-room"><b>terem:</b> ' + temp.room + '</p>';
+
+                //append += '<p><b>id:</b> ' + currentId + '</p>';  // id sneak peek
+
+                //innentől elrejtve
+                append += '<p class="p-period hidden"><b>óraszám:</b> ' + temp.period + '.</p>';
+                append += '<p class="p-teacher hidden"><b>tanár:</b> ' + temp.teacher + '</p>';
+                append += '<p class="p-class hidden">' + getClassString(temp.class) + '</p>';
+
+                append += '<label class="selectButton" for="'+ currentId + '">Jelentkezem erre az órára';
+                append += '<input onclick="selectLesson(this);" type="checkbox" class="selectBox" onmouseover="boxFocus(true);" onmouseout="boxFocus(false);"'; //checkboxok
+                append += 'id="' + currentId + '" '; //id= jelenlegi blokk id-je a data fájlban
+                append += 'name="' + currentId + '" '; // name= ugyanaz mind id
+                append += 'value="' + currentId + '" '  //value= a jelenlegi id integerként
+
+                append += '></label >';
+                append += '</div>';
+                cards.innerHTML += append;
+            }
+
+        }
+    </script>
+
+    <!-- EZT MAJD TÖRÖLNI -->
+    
+    <!-- EZT MAJD TÖRÖLNI -->
+
+</head>
+<body onload="loadCards();">
+    <!--    címet ide  -->
+    <div id="header">
+    <h1>Jelentkezés a nyílt napi órákra</h1>
+        <div class="searchMenu">
+            <label class="menuLabel" for="subjectSearch">Tantárgy:</label>
+            <select id="subjectSearch">
+                <option selected disabled></option>
+                <option class="subjectOption">Állampolgári ismeretek</option>
+                <option class="subjectOption">Angol nyelv</option>
+                <option class="subjectOption">Baptista hittan</option>
+                <option class="subjectOption">Biológia</option>
+                <option class="subjectOption">Biológia - egészségtan</option>
+                <option class="subjectOption">Digitális kultúra</option>
+                <option class="subjectOption">Dráma és színház</option>
+                <option class="subjectOption">Dráma és tánc</option>
+                <option class="subjectOption">Egyházi ének</option>
+                <option class="subjectOption">Ének-zene</option>
+                <option class="subjectOption">Evangélikus hittan</option>
+                <option class="subjectOption">Fizika</option>
+                <option class="subjectOption">Földrajz</option>
+                <option class="subjectOption">Francia nyelv</option>
+                <option class="subjectOption">Informatika</option>
+                <option class="subjectOption">Irodalom</option>
+                <option class="subjectOption">Katolikus hittan</option>
+                <option class="subjectOption">Kémia</option>
+                <option class="subjectOption">Magyar nyelv</option>
+                <option class="subjectOption">Matematika</option>
+                <option class="subjectOption">Német nyelv</option>
+                <option class="subjectOption">Orosz nyelv</option>
+                <option class="subjectOption">Osztályfőnöki</option>
+                <option class="subjectOption">Református hittan</option>
+                <option class="subjectOption">Technika és tervezés</option>
+                <option class="subjectOption">Technika, életvitel és gyakorlat</option>
+                <option class="subjectOption">Testnevelés</option>
+                <option class="subjectOption">Testnevelés és sport</option>
+                <option class="subjectOption">Történelem</option>
+                <option class="subjectOption" title="Történelem, társadalmi és állampolgári ismeretek">Történelem, társadalmi és...</option>
+                <option class="subjectOption">Vizuális kultúra</option>
+            </select>
+        </div>
+        <div class="searchMenu">
+            <label class="menuLabel" for="timeOption-start">Kezdés:</label>
+            <input type="time" id="timeOption-start" class="timeOption">
+
+            <label class="menuLabel" for="timeOption-end">Vége:</label>
+            <input type="time" id="timeOption-end" class="timeOption">
+        </div>
+        <div class="searchMenu">
+            <label class="menuLabel" for="search">Szöveges keresés:</label>
+            <input id="search" type="text" placeholder="Keresés..." value="" maxlength="127">
+            
+            <div>
+                <button id="searchButton" onclick="filterSelected(); filterCards();">Keresés</button>
+            </div>
+
+            <div id="searchResults">
+                
+            </div>
+        </div>
+        <div class="searchMenu"  id="filterSelected">
+            <label for="filterSelectedBox">Csak a kiválasztott órák megjelenítése:</label>
+            <input type="checkbox" id="filterSelectedBox" onclick="resetSearch(); filterSelected();">
+        </div>
+        <div class="searchMenu">
+            <input disabled title="Nincsenek kiválasztott órák" id="submitButton" type="button" value="Jelentkezek a kiválasztott órákra" onclick="submitLessons();">
+        </div>
+        </div>
+    </div>
+
+    <div id="cardList">
+
+    </div>
+</body>
+</html>

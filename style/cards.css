@@ -1,0 +1,234 @@
+:root {  /*credit: öltönybörze*/
+    --shadow_1: #756239;
+    --shadow_2: #756239bb;
+    --shadow_3: #fffbf2cc;
+    --brown_1: #FFFBF2;
+    --brown_2: #FFF4DC;
+    --card: #EFDCB3;
+    --hatterszin: #CBB27C;
+    --hatterszinHover: #A98C4E;
+    --text_1: #42361c;
+    --text_2: #332a16;
+    --text_3: #2e2614;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--hatterszin);
+    margin: 0;
+    min-height: 1080px;
+}
+
+.card { /*a listázott cardok*/
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px;
+    width: 40%;
+    margin: 10px auto;
+    background-color: var(--card);
+    font-size: large;
+    box-shadow: 3px 3px 5px var(--shadow_1);
+
+    height: 126px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.card:hover {
+    background-color: var(--hatterszinHover);
+    color: white;
+}
+.card:active {
+    background-color: var(--hatterszin);
+}
+
+.selectButton:hover {
+    background-color: var(--shadow_1);
+    color: var(--shadow_3);
+    transition: 0.5s;
+}
+
+
+
+div.card p { /*A div cardokban lévő 3 sor szöveg*/
+
+}
+
+h1 {
+    color: var(--card);
+    font-size: larger;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px var(--shadow_1);
+    text-align: center;
+    font-size: 400%;
+}
+
+#header {
+    padding: 3px;
+    margin-bottom: 20px;
+    background-color: var(--text_1);
+    box-shadow: 0 3px 5px var(--text_1);
+}
+.searchMenu {
+    text-align: center;
+    padding-bottom: 20px;
+
+}
+#search, .subjectOption, #subjectSearch, .timeOption {
+    background-color: var(--brown_1);
+    font-size: large;
+    padding-left: 15px;
+    color: var(--text_1);
+    height: 35px;
+    font-style: italic;
+    max-width: 15%;
+    margin: 10px;
+    border: 0;
+    border-radius: 25px;
+    overflow: hidden;
+}
+.timeOption {
+    width: 10%;
+}
+
+#searchButton {
+    background-color: var(--hatterszin);
+    color: var(--text_2);
+    cursor: pointer;
+    border: 0;
+    border-radius: 25px;
+    width: 25%;
+    height: 50px;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 15px;
+    box-shadow: 2px 2px 2px var(--hatterszinHover);
+    transition: 0.5s;
+}
+#searchButton:hover {
+    background-color: var(--brown_2);
+    box-shadow: 2px 2px 2px var(--brown_2);
+    transition: 0.5s;
+}
+#searchbButton:active {
+    background-color: var(--card);
+    box-shadow: 2px 2px 2px var(--card);
+    transition: 0.5s;
+}
+
+div.searchmenu div {
+    text-align: center;
+}
+
+#result, label.menuLabel, div#filterSelected label {
+    color: var(--card);
+    font-size: 150%;
+    padding-top: 20px;
+    font-style: italic;
+    width: 25%;
+    text-align: center;
+    margin: 0 auto;
+}
+#searchResults {
+    height: 40px;
+    padding: 10px;
+}
+
+.selectBox {
+    height: 80%;
+    width: 80%;
+    accent-color: var(--shadow_1);
+    transition: 0.5s;
+}
+.selectBox:hover {
+    accent-color: var(--card);
+    transition: 0.5s;
+}
+.selectButton {
+    margin: 0 auto;
+    background-color: var(--brown_2);
+    border: 0;
+    border-radius: 25px;
+    color: var(--text_1);
+    box-shadow: 3px 3px 3px var(--shadow_1);
+
+    height: 12%;
+    width: 30%;
+    font-size: 110%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+
+    cursor: pointer;
+    transition: 0.5s;
+
+    overflow: hidden;
+}
+
+#filterSelectedBox {
+    accent-color: var(--shadow_1);
+    width: 30px;
+    height: 30px;
+}
+#filterSelectedBox:hover {
+    accent-color: var(--card);
+    width: 30px;
+    height: 30px;
+}
+
+#submitButton {
+    background-color: var(--hatterszin);
+    color: var(--text_2);
+    cursor: pointer;
+    border-radius: 30px;
+    border: 0;
+    width: 30%;
+    height: 60px;
+    font-weight: bold;
+    font-style: normal;
+    font-size: larger;
+    margin-top: 15px;
+    box-shadow: 2px 2px 2px var(--hatterszinHover);
+    transition: 0.5s;
+    opacity: 1;
+}
+#submitButton:hover {
+    box-shadow: 4px 4px 0 var(--hatterszinHover);
+    transition: 0.5s;
+    background-color: var(--card);
+    font-style: italic;
+    font-size: x-large;
+    color: var(--text_3);
+    opacity: 1;
+}
+
+#submitButton:disabled, #submitButton:disabled:hover {
+    background-color: var(--hatterszin);
+    opacity: 0.5;
+    color: var(--text_1);
+    cursor: default;
+    border-radius: 30px;
+    border: 0;
+    width: 30%;
+    height: 60px;
+    font-weight: normal;
+    font-style: italic;
+    font-size: large;
+    margin-top: 15px;
+    box-shadow: 0 0 0 var(--hatterszinHover);
+    transition: 0.5s;
+}
+
+#submitButton:active {
+    box-shadow: 4px 4px 0 var(--hatterszinHover);
+    transition: 0.3s;
+    background-color: var(--shadow_1);
+    width: 25%;
+    font-style: italic;
+    font-size: x-large;
+    color: var(--text_3);
+    opacity: 1;
+}
