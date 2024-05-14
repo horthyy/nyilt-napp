@@ -1,1 +1,1 @@
-# nyilt-napp
+# nyilt-napp, nincsen css
